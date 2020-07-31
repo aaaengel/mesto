@@ -1,0 +1,17 @@
+@import url("./__image/card__image.css");
+@import url("./__content/card__content.css");
+@import url("./__text/card__text.css");
+@import url("./__description/card__description.css");
+.card{
+    margin-right:18px;
+    margin-bottom: 21px;
+}
+.card:nth-child(3n){
+    margin:0;
+} 
+@media screen and (max-width:880px){
+    .card:nth-child(3n){
+        margin-right:18px;
+        margin-bottom: 21px;
+    }
+}

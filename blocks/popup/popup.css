@@ -1,0 +1,12 @@
+@import url("./__window/popup__window.css");
+@import url("./__text/popup__text.css");
+@import url("./__name/popup__name.css");
+@import url("./__hobby/popup__hobby.css");
+@import url("./_opened/popup_opened.css");
+.popup{
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    background-color: rgba(0, 0, 0 , 0.5);
+    position: fixed;
+}

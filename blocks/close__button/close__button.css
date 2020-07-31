@@ -1,0 +1,9 @@
+.close__button{
+    position: absolute;
+    left:98%;
+    top:-15%;
+}
+.close__button:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}

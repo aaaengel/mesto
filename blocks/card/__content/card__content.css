@@ -1,0 +1,6 @@
+.card__content{
+    margin: auto;
+    max-width:246px;
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,0 +1,7 @@
+@import url("./__line/header__line.css");
+.header{
+    display: flex;
+    margin-top:45px;
+    min-height: 74px;
+    flex-direction: column;
+}
