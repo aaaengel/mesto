@@ -1,0 +1,7 @@
+.card__like-button{
+    border: none;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0);
+    height:min-content;
+    align-self: center;
+}

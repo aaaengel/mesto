@@ -5,11 +5,7 @@
 @import url("../blocks/header/header.css");
 @import url("../blocks/logo/logo.css");
 @import url("../blocks/profile/profile.css");
-@import url("../blocks/edit__button/edit__button.css");
-@import url("../blocks/add__button/add__button.css");
 @import url("../blocks/cards/cards.css");
 @import url("../blocks/card/card.css");
 @import url("../blocks/footer/footer.css");
 @import url("../blocks/popup/popup.css");
-@import url("../blocks/save__button/save__button.css");
-@import url("../blocks/close__button/close__button.css");

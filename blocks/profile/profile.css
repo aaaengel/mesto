@@ -3,6 +3,9 @@
 @import url("./__hobby/profile__hobby.css");
 @import url("./__Info/profile__info.css");
 @import url("./__avatar-and-info/profile__avatar-and-info.css");
+@import url("./__edit-button/profile__edit-button.css");
+@import url("./__add-button/profile__add-button.css");
+@import url("./__add-button__image/profile__add-button__image.css");
 .profile{
     max-width:882px;
     margin-top:40px;

@@ -1,7 +1,6 @@
 .profile__avatar-and-info{
     display: flex;
     max-width: 486px;
-    min-height: 120px;
 }
 @media screen and (max-width:560px){
     .profile__avatar-and-info{

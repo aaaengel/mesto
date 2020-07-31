@@ -8,3 +8,8 @@
         margin-left:27px;
     }
 }
+@media screen and (max-width:500px){
+    .logo{
+        max-width: 103.74px;
+}
+}

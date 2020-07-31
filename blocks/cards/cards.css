@@ -1,7 +1,6 @@
 .cards{
     margin-top:51px;
     max-width: 882px;
-    min-height: 744px;
     display: flex;
     flex-wrap: wrap;
 }

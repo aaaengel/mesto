@@ -1,6 +1,6 @@
 .profile__hobby{
     color: white;
-    font-family: Inter;
+    font-family: Inter, Arial, Helvetica, sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
@@ -13,5 +13,7 @@
         text-align: center;
         margin: auto;
         margin-top: 14px;
+        font-size: 14px;
+        line-height: 17px;
     }
   }
