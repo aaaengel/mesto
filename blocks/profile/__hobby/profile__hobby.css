@@ -1,19 +1,16 @@
 .profile__hobby{
-    color: white;
-    font-family: Inter, Arial, Helvetica, sans-serif;
+    font-family: Inter;
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
-    line-height: 22px;
-    margin: 0;
-    margin-top: 16px;
+    margin-top:16px;
+    line-height: font-size;
 }
-@media screen and (max-width: 600px){
+@media screen and (max-width:630px){
     .profile__hobby{
         text-align: center;
         margin: auto;
-        margin-top: 14px;
         font-size: 14px;
-        line-height: 17px;
+        margin-bottom: 36px;
     }
-  }
+}

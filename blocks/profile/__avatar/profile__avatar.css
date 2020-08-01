@@ -1,11 +1,11 @@
 .profile__avatar{
+    border-radius: 50%;
     max-width: 120px;
     max-height: 120px;
-    border-radius: 50%;
-    overflow: hidden;
 }
-@media screen and (max-width: 400px){
+@media screen and (max-width:630px){
     .profile__avatar{
-        margin:auto;
+        margin: auto;
+        
     }
 }
