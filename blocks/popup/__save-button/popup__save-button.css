@@ -8,6 +8,7 @@
     color: white;
     font-family: inter, Arial, Helvetica, sans-serif;
     width:358px;
+    height: 50.15px;
 }
 .popup__save-button:hover{
     opacity: 0.6;
