@@ -35,6 +35,10 @@ const initialCards = [
     }
 ];
 function renderCard(){
+    /*У тебя внутри функции есть две переменных, которые функция должна принять снаружи - name и link.
+    поэтому, ты должен задать их как аргументы функции в круглых скобках, после объявления
+    имени функции. Добавь эти переменные.
+    */
     const card = document.createElement("div");
     card.classList.add("card");
     const cardImage = document.createElement("img");
@@ -51,6 +55,8 @@ function renderCard(){
     likeImage.setAttribute("alt", "сердечко");
     cardText.textContent = name;
     cardImage.setAttribute('src', `${link}`);
+    /* Ты передаешь в метод appendChild строки (они в кавычках), а должен передавать переменные, который ты создал выше.
+  Метод appendChild принимает node-элемент, который добавится дочерним к другому node-элементу */
     cards.appendChild("card");
     card.appendChild("cardImage");
     card.appendChild("cardDescription");
@@ -63,6 +69,7 @@ function addCard(){
         const array = initialCards[i];
         const name = array.name;
         const link = array.link;
+        /* А здесь ты передаешь эти переменные в функцию, чтобы функция могла уже с ними работать */
         renderCard();
     }
 }
