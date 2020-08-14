@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./pages/index.css">
+        <title>Mesto</title>
+    </head>
+    <body class="body">
+        <div class="popup">
+            <form class="popup__window">
+                <h2 class="popup__text">Редактировать профиль</h2>
+                <div class="form-container">
+                <input type='text' class='popup__form popup__form_name' id='name' name='name' required>
+                <input class="popup__form popup__form_hobby" type="text" name="hobby" required></div>
+                <button type="submit" class="popup__save-button">Сохранить</button>
+                <button type="button">
+                    <img class="popup__close-button" src="./images/CloseIcon.svg" alt="кнопка выхода">
+                </button>
+            </form>
+        </div>
+        <div class="page">
+            <header class="header">
+                <img class="logo" src="./images/logo.svg" alt="Место">
+            </header>
+            <main>
+                <section class="profile">
+                    <div class="profile__info">
+                        <img class="profile__avatar" src="./images/image.jpg" alt="аватар">
+                        <div class="profile__text">
+                            <div class="profile__name-and-edit-button">
+                                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                                <button type="button" class="profile__edit-button">
+                                    <img src="./images/EditButton.svg" alt="кнопка редактирования" class="profile__edit-button__image">
+                                </button>
+                            </div>
+                            <p class="profile__hobby">Исследователь океана</p>
+                        </div>
+                    </div>
+                    <button type="button" class="profile__add-button">
+                        <img src="./images/Vector2.svg" alt="плюсик" class="profile__add-button__image">
+                    </button>
+                </section>
+                <section class="cards">
+                    
+                </section>
+            </main>
+            <footer class="footer">
+                <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+            </footer>
+        </div>
+        <script src="./script/script.js"></script>
+    </body>
+</html>
