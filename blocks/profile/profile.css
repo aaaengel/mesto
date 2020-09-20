@@ -1,4 +1,3 @@
-@import url("./__info/profile__info.css");
 @import url("./__edit-button/profile__edit-button.css");
 @import url("./__text/profile__text.css");
 @import url("./__avatar/profile__avatar.css");
@@ -7,6 +6,7 @@
 @import url("./__add-button/profile__add-button.css");
 @import url("./__edit-button__image/profile__edit-button__image.css");
 @import url("./__name-and-edit-button/profile__name-and-edit-button.css");
+@import url("./__content/profile__content.css");
 .profile{
     max-width:882px;
     margin-top:40px;
@@ -18,3 +18,5 @@
         flex-direction: column;
     }
 }
+/*У меня profile__info импортирован правильно, проверил через ctrl*/
+/*не знаю почему не показывает в gh.pages*/

@@ -7,25 +7,60 @@
         <title>Mesto</title>
     </head>
     <body class="body">
-        <div class="popup">
+        <div class="popup popup_edit">
+            <div class="popup__overlay popup__overlay-edit">
             <form class="popup__window">
-                <h2 class="popup__text">Редактировать профиль</h2>
-                <div class="form-container">
-                <input type='text' class='popup__form popup__form_name' id='name' name='name' required>
-                <input class="popup__form popup__form_hobby" type="text" name="hobby" required></div>
-                <button type="submit" class="popup__save-button">Сохранить</button>
-                <button type="button">
-                    <img class="popup__close-button" src="./images/CloseIcon.svg" alt="кнопка выхода">
-                </button>
+                <fieldset class="form__set">
+                    <h2 class="popup__text">Редактировать профиль</h2>
+                    <div class="form-container">
+                    <input type='text' class='popup__form popup__form_name' id='name' name='name' maxlength="40" minlength="2" required> 
+                    <span class='form__input-error' id='name-error'></span>
+                    <input class="popup__form popup__form_hobby" type="text" id = "hobby" name="hobby" maxlength="200" minlength="2" required></div>
+                    <span class='form__input-error' id='hobby-error'></span>
+                    <button type="submit" class="popup__save-button">Сохранить</button>
+                    <button type="button">
+                        <img class="popup__close-button popup__close-button_edit" src="./images/CloseIcon.svg" alt="кнопка выхода">
+                    </button>
+                </fieldset>
             </form>
+            </div>
         </div>
+        <div class="popup popup_mesto">
+            <div class="popup__overlay popup__overlay-mesto">
+            <form class="popup__window popup__new-card" name="newCard">
+                <fieldset class="form__set">
+                    <h2 class="popup__text">Новое место</h2>
+                    <div class="form-container">
+                    <input type='text' class='popup__form popup__mesto-form' id='name' name='name' placeholder="Название" required>
+                    <span class='form__input-error' id='name-error'></span>
+                    <input class="popup__form popup__link-form"  id="link" name="link" placeholder="ссылка" type="url" required></div>
+                    <span class='form__input-error' id='link-error'></span>
+                    <button type="submit" class="popup__save-button popup__save-button_mesto">Сохранить</button>
+                    <button type="button">
+                        <img class="popup__close-button popup__close-button_mesto" src="./images/CloseIcon.svg" alt="кнопка выхода">
+                    </button>   
+                </fieldset>
+            </form>
+            </div>
+        </div>
+        <div class="popup popup_image">
+            <div class="popup__overlay popup__overlay-image">
+            <div class="popup__content">
+             <img src="" alt="картинка места" class="popup__image_image">
+              <p class="popup__caption_image"></p>
+              <button type="button">
+                <img class="popup__close-button popup__close-button_image" src="./images/CloseIcon.svg" alt="кнопка выхода">
+            </button>
+            </div>
+            </div>
+          </div>
         <div class="page">
             <header class="header">
                 <img class="logo" src="./images/logo.svg" alt="Место">
             </header>
             <main>
                 <section class="profile">
-                    <div class="profile__info">
+                    <div class="profile__content">
                         <img class="profile__avatar" src="./images/image.jpg" alt="аватар">
                         <div class="profile__text">
                             <div class="profile__name-and-edit-button">
@@ -42,60 +77,20 @@
                     </button>
                 </section>
                 <section class="cards">
-                    <div class="card">
-                        <img class="card__image" src="./images/kirill-pershin-1088404-unsplash.png" alt="Карачаевск">
-                        <div class="card__description">
-                           <h3 class="card__text">Карачаевск</h3>
-                            <button class="card__like-button" type="button">
-                                <img src="./images/Vector.svg" alt="сердечко">
-                            </button>
+                    <template class="card-template">
+                        <div class="card">
+                            <img class="card__image" src="" alt="">
+                            <div class="card__description">
+                                <h3 class="card__text"></h3>
+                                <button class="card__like-button" type="button">
+                                    <img class="card__like-image" src="./images/Vector.svg" alt="сердечко">
+                                </button>
+                                <button class="card__delete-button">
+                                    <img src="./images/Group.svg">
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card">
-                        <img class="card__image" src="./images/kirill-pershin-1404681-unsplash.png" alt="Эльбрус">
-                        <div class="card__description">
-                            <h3 class="card__text">Гора Эльбрус</h3>
-                            <button class="card__like-button" type="button">
-                                <img src="./images/Vector.svg" alt="сердечко">
-                            </button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img class="card__image" src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай">
-                        <div class="card__description">
-                            <h3 class="card__text">Домбай</h3>
-                            <button class="card__like-button" type="button">
-                                <img src="./images/Vector.svg" alt="сердечко">
-                            </button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img class="card__image" src="./images/kirill-pershin-1404681-unsplash.png" alt="Эльбрус">
-                        <div class="card__description">
-                            <h3 class="card__text">Гора Эльбрус</h3>
-                            <button class="card__like-button" type="button">
-                                <img src="./images/Vector.svg" alt="сердечко">
-                            </button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img class="card__image" src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай">
-                        <div class="card__description">
-                            <h3 class="card__text">Домбай</h3>
-                            <button class="card__like-button" type="button">
-                                <img src="./images/Vector.svg" alt="сердечко">
-                            </button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img class="card__image" src="./images/kirill-pershin-1088404-unsplash.png" alt="Карачаево-Черкесия">
-                        <div class="card__description">
-                            <h3 class="card__text">Карачаево-Черкессия</h3>
-                            <button class="card__like-button" type="button">
-                                <img src="./images/Vector.svg" alt="сердечко">
-                            </button>
-                        </div>
-                    </div>
+                    </template>
                 </section>
             </main>
             <footer class="footer">
