@@ -114,9 +114,25 @@ function editInfo(evt){
     name.textContent = nameInput.value;
     popupCloseEdit();
 }
-popupOverlayImage.addEventListener("click", popupImageClose);
-popupOverlayEdit.addEventListener("click", popupCloseEdit); 
-popupOverlayMesto.addEventListener("click", popupCloseMesto);
+popupImage.addEventListener("click", function(evt){
+  if(evt.target === popupOverlayImage){
+    popupImageClose();
+  }
+});
+popupOverlayEdit.addEventListener("click", function(evt){
+  if(evt.target === popupOverlayEdit){
+    popupCloseEdit();
+  }
+}); 
+popupOverlayMesto.addEventListener("click", function(evt){
+  if(evt.target === popupOverlayMesto){
+    popupCloseMesto();
+  }
+});
+function popupOpen(){
+  popup.popup.classList.add("popup_opened");
+}
+
 //------------------------------------------------------------------------------Validation-----------------------------------------------------------------------------------------------------------------------
 
 function showInputError(formElement, inputElement, errorMessage){
@@ -151,8 +167,10 @@ const checkInputValidity = (formElement, inputElement) => {
   function toggleButtonState(inputList, buttonElement){
     if (hasInvalidInput(inputList)) {
     buttonElement.classList.add('popup__save-button_inactive');
+    buttonElement.setAttribute('disabled', true);
   } else {
     buttonElement.classList.remove('popup__save-button_inactive');
+    buttonElement.removeAttribute('disabled');
   }
   }
   const enableValidation = () => {

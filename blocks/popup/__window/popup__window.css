@@ -4,6 +4,7 @@
     background-color: white;
     border-radius: 10px;
     position: relative;
+    border: 1px solid red;
 }
 @media screen and (max-width:510px){
     .popup__window{
