@@ -8,11 +8,11 @@
     margin-bottom: 21px;
     position: relative;
 }
-.card:nth-child(3n + 1){
+.card:nth-child(3n){
     margin:0;
 } 
 @media screen and (max-width:880px){
-    .card:nth-child(3n + 1){
+    .card:nth-child(3n){
         margin-right:18px;
         margin-bottom: 21px;
     }
