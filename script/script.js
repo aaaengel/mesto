@@ -1,8 +1,8 @@
 const editButton = document.querySelector(".profile__edit-button");
 const job = document.querySelector(".profile__hobby");
 const name = document.querySelector(".profile__name");
-const nameInput = document.querySelector(".popup__form_name");
-const jobInput = document.querySelector(".popup__form_hobby");
+const nameInput = document.querySelector(".form__input_name");
+const jobInput = document.querySelector(".form__input_hobby");
 const saveButton = document.querySelector(".popup__save-button");
 const formEdit = document.querySelector(".popup__window_edit");
 const formMesto = document.querySelector(".popup__window_mesto");
@@ -21,6 +21,16 @@ const popupOverlayEdit = document.querySelector(".popup__overlay-edit")
 const popupOverlayMesto = document.querySelector(".popup__overlay-mesto");
 const popupOverlayImage = document.querySelector(".popup__overlay-image");
 const cardTemplate = document.querySelector(".card-template").content;
+const link = document.querySelector(".form__input_link");
+const mesto = document.querySelector(".form__input_mesto");
+const config = {
+  inputSelector: '.form__input',
+  formSelector: '.popup__window',
+  submitButtonSelector: '.popup__save-button',
+  inactiveButtonClass: 'popup__save-button_inactive',
+  inputErrorClass: 'form__input_type_error',
+  formSet: ".form__set"
+};
 const initialCards = [
     {
         name: 'Архыз',
@@ -48,17 +58,16 @@ const initialCards = [
     }
 ];
 function addCards(name, link){
-    const cardElement = cardTemplate.cloneNode(true);
+  const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
     cardElement.querySelector(".card__image").src = link;
     cardElement.querySelector(".card__text").textContent = name;
-    const card = cardElement.querySelector(".card");  //не могу удалить card потому что не смогу вызвать функцию удаления на cardElement тк он Node а card - нет
     const cardImage = cardElement.querySelector(".card__image");
     const likeImage = cardElement.querySelector(".card__like-image");
     const cardLikeButton = cardElement.querySelector(".card__like-button");
     const deleteButton = cardElement.querySelector(".card__delete-button");
     cards.prepend(cardElement);
     function deleteCard(){   
-        cards.removeChild(card); //с cardElement.remove не получается, я не могу вызвать remove на этом элементе и удалить его...
+      cardElement.remove();
     }
     cardImage.addEventListener("click", function(){
         popupImage.classList.add("popup_opened");
@@ -80,24 +89,21 @@ function addInitialCards(){
 }
 addInitialCards();
 
-function popupEditOpen(){
-    popupEdit.classList.add("popup_opened");
-    jobInput.value = job.textContent;//<-- не могу объединить две функции тк одна отличается от другой этими строчками
-    nameInput.value = name.textContent;
+function popupOpen(popup){
+    popup.classList.add("popup_opened");
+    document.addEventListener('keydown', closeByEsc);
 }
-function popupMestoOpen(){
-    popupMesto.classList.add("popup_opened");
-}
-const form = document.querySelector(".popup__new-card");
+const formNewCard = document.querySelector(".popup__new-card");
 function addUserCard(evt){
     evt.preventDefault();
-        const name = form.name.value;
-        const link = form.link.value;
-        renderInitialCards(name, link);
-        popupCloseMesto();
+        const name = formNewCard.name.value;
+        const link = formNewCard.link.value;
+        addCards(name, link);
+        popupClose(popupMesto);
 }
 function popupClose(popup){
     popup.classList.remove("popup_opened");
+    document.removeEventListener('keyup', closeByEsc);
 }
 function editInfo(evt){
     evt.preventDefault();
@@ -119,20 +125,23 @@ popupOverlayMesto.addEventListener("click", function(evt){
   if(evt.target === popupOverlayMesto){
     popupClose(popupMesto);
   }
-});
-function popupOpen(){
-  popup.popup.classList.add("popup_opened");
+}); 
+function closeByEsc(evt) {
+  if (evt.key === 'Escape') {
+      const popupOpened = document.querySelector('.popup_opened');
+      popupClose(popupOpened);
+  }
 }
 //------------------------------------------------------------------------------Validation-----------------------------------------------------------------------------------------------------------------------
 
 function showInputError(formElement, inputElement, errorMessage){
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.add("form__input_type_error");
+  inputElement.classList.add(config.inputErrorClass);
   errorElement.textContent = errorMessage;
 }
 function hideInputError(formElement, inputElement){
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.remove("form__input_type_error");
+  inputElement.classList.remove(config.inputErrorClass);
   errorElement.textContent = '';
 }
 const checkInputValidity = (formElement, inputElement) => {
@@ -143,9 +152,9 @@ const checkInputValidity = (formElement, inputElement) => {
   }
 };
 const setEventListeners = (formElement) => {
-  const inputList = Array.from(formElement.querySelectorAll('.popup__form'));
+  const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
   console.log(inputList);
-  const buttonElement = formElement.querySelector('.popup__save-button');
+  const buttonElement = formElement.querySelector(config.submitButtonSelector);
   toggleButtonState(inputList, buttonElement);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
@@ -156,20 +165,20 @@ const setEventListeners = (formElement) => {
 };
 function toggleButtonState(inputList, buttonElement){
   if (hasInvalidInput(inputList)) {
-  buttonElement.classList.add('popup__save-button_inactive');
+  buttonElement.classList.add(config.inactiveButtonClass);
   buttonElement.setAttribute('disabled', true);
 } else {
-  buttonElement.classList.remove('popup__save-button_inactive');
+  buttonElement.classList.remove(config.inactiveButtonClass);
   buttonElement.removeAttribute('disabled');
 }
 }
-const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll('.popup__window'));
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', function (evt) {
       evt.preventDefault();
     });
-  const fieldsetList = Array.from(formElement.querySelectorAll('.form__set'));
+  const fieldsetList = Array.from(formElement.querySelectorAll(config.formSet));
   fieldsetList.forEach((fieldSet) => {
   setEventListeners(fieldSet);
 });
@@ -180,11 +189,19 @@ function hasInvalidInput(inputList) {
   return !inputElement.validity.valid;
   });
 }
-enableValidation(); // БЕЗ ПОНЯТИЯ КАК ИПОРТИРОВАТЬ ТАК КАК НЕ БЫЛО ТАКОЙ ТЕМЫ...
+enableValidation(config); 
 
 popupMesto.addEventListener("submit", addUserCard);
-addButton.addEventListener("click", popupMestoOpen);
-editButton.addEventListener("click", popupEditOpen);
+addButton.addEventListener("click", function(){
+  popupOpen(popupMesto);
+  link.value = "";
+  mesto.value = "";
+});
+editButton.addEventListener("click", function(){
+  popupOpen(popupEdit);
+  jobInput.value = job.textContent;
+  nameInput.value = name.textContent;
+});
 closeButtonEdit.addEventListener("click", function(){
   popupClose(popupEdit)
 });

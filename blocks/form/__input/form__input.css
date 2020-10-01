@@ -1,4 +1,4 @@
-.popup__form{
+.form__input{
     border:0;
     width: 358px;
     box-sizing: border-box;
@@ -13,7 +13,7 @@
     margin-top: 29px;
 }
 @media screen and (max-width:510px){
-    .popup__form{
+    .form__input{
         max-width: 200px;
     }
 }
