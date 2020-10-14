@@ -64,26 +64,5 @@ const config = {
   }
   enableValidation(config); 
   
-  popupMesto.addEventListener("submit", addUserCard);
-  addButton.addEventListener("click", function(){
-    popupOpen(popupMesto);
-    link.value = "";
-    mesto.value = "";
-    buttonElement.classList.add(config.inactiveButtonClass);
-  });
-  editButton.addEventListener("click", function(){
-    popupOpen(popupEdit);
-    jobInput.value = job.textContent;
-    nameInput.value = name.textContent;
-  });
-  closeButtonEdit.addEventListener("click", function(){
-    popupClose(popupEdit)
-  });
-  closeButtonMesto.addEventListener("click", function(){
-    popupClose(popupMesto)
-  });
-  formEdit.addEventListener("submit", editInfo);
-  closeButtonImage.addEventListener("click", function(){
-    popupClose(popupImage)
-  });
+  
   

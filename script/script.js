@@ -49,6 +49,36 @@ const initialCards = [
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
+class Card{
+  constructor(data, templateSelector){
+    this._link = data.link;
+    this._title = data.title;
+    this._templateSelector = templateSelector;
+  }
+  _getTemplate(){
+    const cardElement = document
+    .querySelector(this._templateSelector)
+    .content
+    .querySelector(".card")
+    .cloneNode(true);
+    return cardElement;
+  }
+  generateCard(){
+    this._item = this._getTemplate();
+    this._item.querySelector("card__image").src = this._link;
+    this._item.querySelector("card__text").textContent = this._name;
+  }
+  _popupOpen(popup){
+    popup.classList.add("popup_opened");
+    document.addEventListener('keydown', closeByEsc);
+
+}
+ _popupClose(popup){
+  popup.classList.remove("popup_opened");
+  document.removeEventListener('keyup', closeByEsc);
+}
+
+}
 function addCards(name, link){
   const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
     cardElement.querySelector(".card__image").src = link;
@@ -65,7 +95,7 @@ function addCards(name, link){
        popupOpen(popupImage);
         popupImageImage.src = link;
         imageCaption.textContent = name;
-    })
+    })  
     cardLikeButton.addEventListener("click", function(){
         likeImage.classList.toggle("card__like-icon_active");
     })
@@ -80,11 +110,6 @@ function addInitialCards(){
     }
 }
 addInitialCards();
-
-function popupOpen(popup){
-    popup.classList.add("popup_opened");
-    document.addEventListener('keydown', closeByEsc);
-}
 const formNewCard = document.querySelector(".popup__new-card");
 function addUserCard(evt){
     evt.preventDefault();
@@ -92,10 +117,6 @@ function addUserCard(evt){
         const link = formNewCard.link.value;
         addCards(name, link);
         popupClose(popupMesto);
-}
-function popupClose(popup){
-    popup.classList.remove("popup_opened");
-    document.removeEventListener('keyup', closeByEsc);
 }
 function editInfo(evt){
     evt.preventDefault();
