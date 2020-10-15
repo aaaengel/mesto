@@ -8,44 +8,36 @@
     </head>
     <body class="body">
         <div class="popup popup_edit">
-            <div class="popup__overlay popup__overlay-edit">
-            <form class="popup__window popup__window_edit">
-                <fieldset class="form__set">
-                    <h2 class="popup__text">Редактировать профиль</h2>
-                    <div class="form-container">
-                    <input type='text' class='form__input form__input_name popup__form_edit' id='name' name='name' maxlength="40" minlength="2" required> 
-                    <span class='form__input-error' id='name-error'></span>
-                    <input class="form__input form__input_hobby popup__form_edit" type="text" id = "hobby" name="hobby" maxlength="200" minlength="2" required></div>
-                    <span class='form__input-error' id='hobby-error'></span>
-                    <button type="submit" class="popup__save-button">Сохранить</button>
+            <form class="popup__window">
+                <h2 class="popup__text">Редактировать профиль</h2>
+                <div class="form-container">
+                <input type='text' class='popup__form popup__form_name' id='name' name='name' required>
+                <input class="popup__form popup__form_hobby" type="text" name="hobby" required></div>
+                <button type="submit" class="popup__save-button">Сохранить</button>
+                <button type="button">
                     <img class="popup__close-button popup__close-button_edit" src="./images/CloseIcon.svg" alt="кнопка выхода">
-                    </fieldset>
+                </button>
             </form>
-            </div>
         </div>
         <div class="popup popup_mesto">
-            <div class="popup__overlay popup__overlay-mesto">
-            <form class="popup__window popup__new-card popup__window_mesto" name="newCard">
-                <fieldset class="form__set">
-                    <h2 class="popup__text">Новое место</h2>
-                    <div class="form-container">
-                    <input type='text' class='form__input form__input_mesto popup__form_mesto' id='name' name='name' placeholder="Название" required>
-                    <span class='form__input-error' id='name-error'></span>
-                    <input class="form__input form__input_link popup__form_mesto"  id="link" name="link" placeholder="ссылка" type="url" required></div>
-                    <span class='form__input-error' id='link-error'></span>
-                    <button type="submit" class="popup__save-button popup__save-button_mesto">Сохранить</button>
+            <form class="popup__window popup__new-card" name="newCard">
+                <h2 class="popup__text">Новое место</h2>
+                <div class="form-container">
+                <input type='text' class='popup__form popup__mesto-form' id='name' name='name' placeholder="Название" required>
+                <input class="popup__form popup__link-form" type="text" name="link" placeholder="ссылка" required></div>
+                <button type="submit" class="popup__save-button popup__save-button_mesto">Сохранить</button>
+                <button type="button">
                     <img class="popup__close-button popup__close-button_mesto" src="./images/CloseIcon.svg" alt="кнопка выхода">
-                </fieldset>
+                </button>
             </form>
-            </div>
         </div>
         <div class="popup popup_image">
-            <div class="popup__overlay popup__overlay-image">
             <div class="popup__content">
              <img src="" alt="картинка места" class="popup__image_image">
               <p class="popup__caption_image"></p>
-              <img class="popup__close-button popup__close-button_image" src="./images/CloseIcon.svg" alt="кнопка выхода">
-            </div>
+              <button type="button">
+                <img class="popup__close-button popup__close-button_image" src="./images/CloseIcon.svg" alt="кнопка выхода">
+            </button>
             </div>
           </div>
         <div class="page">
@@ -91,9 +83,6 @@
                 <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
             </footer>
         </div>
-        <script type="module" src="./script/script.js"></script>
-        <script type="module" src="./script/validate.js"></script>
-        <script type="module" src="./script/Card.js"></script>
-        <script type="module" src="./script/config.js"></script>
+        <script src="./script/script.js"></script>
     </body>
 </html>

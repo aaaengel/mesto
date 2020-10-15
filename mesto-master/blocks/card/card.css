@@ -22,7 +22,7 @@
         margin: auto;
         margin-bottom: 20px;
     }
-    .card:nth-child(3n + 1){
+    .card:nth-child(3n){
        margin: auto;
        margin-bottom: 20px;
 }
