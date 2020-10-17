@@ -49,18 +49,12 @@ export class FormValidation{
     }
     }
      enableValidation = () => {
-      const formList = Array.from(document.querySelectorAll(this._formSelector));
-      formList.forEach((formElement) => {
-          formElement.addEventListener('submit', (evt) => {
-          evt.preventDefault();
-        });
-      const fieldsetList = Array.from(this._formElement.querySelectorAll(this._formSet));
-      fieldsetList.forEach((fieldSet) => {
-      this._setEventListeners(fieldSet);
-    });
-      });
-    };
-     _hasInvalidInput(inputList) {
+      this._formElement.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+     });
+     this._setEventListeners(this._formElement);
+  }
+    _hasInvalidInput(inputList) {
       return inputList.some((inputElement) => {
       return !inputElement.validity.valid;
       });

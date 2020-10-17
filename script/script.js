@@ -47,7 +47,7 @@ const initialCards = [
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
-function popupOpen(popup){
+function openPopup(popup){
     popup.classList.add("popup_opened");
     document.addEventListener('keydown', closeByEsc);
 }
@@ -58,14 +58,14 @@ function addUserCard(evt) {
   const cardNewElement = newCard.generateCard();
   cards.prepend(cardNewElement);
 
-  popupClose(popupMesto);
+  closePopup(popupMesto);
 }
 initialCards.forEach((item) => {
   const card = new Card(item, ".card-template");
   const cardElement = card.generateCard();
   cards.append(cardElement);
 })
-function popupClose(popup){
+function closePopup(popup){
     popup.classList.remove("popup_opened");
     document.removeEventListener('keyup', closeByEsc);
 }
@@ -73,55 +73,56 @@ function editInfo(evt){
     evt.preventDefault();
     job.textContent = jobInput.value;
     name.textContent = nameInput.value;
-    popupClose(popupEdit);
+    closePopup(popupEdit);
 }
 popupImage.addEventListener("click", function(evt){
   if(evt.target === popupOverlayImage){
-    popupClose(popupImage);
+    closePopup(popupImage);
   }
 });
 popupOverlayEdit.addEventListener("click", function(evt){
   if(evt.target === popupOverlayEdit){
-    popupClose(popupEdit);
+    closePopup(popupEdit);
   }
 }); 
 popupOverlayMesto.addEventListener("click", function(evt){
   if(evt.target === popupOverlayMesto){
-    popupClose(popupMesto);
+    closePopup(popupMesto);
   }
 }); 
 function closeByEsc(evt) {
   if (evt.key === 'Escape') {
       const popupOpened = document.querySelector('.popup_opened');
-      popupClose(popupOpened);
+      closePopup(popupOpened);
   }
 }
 popupMesto.addEventListener("submit", addUserCard);
 addButton.addEventListener("click", function(){
-  popupOpen(popupMesto);
+  openPopup(popupMesto);
   link.value = "";
   mesto.value = "";
   saveButtonMesto.classList.add(config.inactiveButtonClass);
+  saveButtonMesto.disabled = true;
 });
 editButton.addEventListener("click", function(){
-  popupOpen(popupEdit);
+  openPopup(popupEdit);
   jobInput.value = job.textContent;
   nameInput.value = name.textContent;
 });
 closeButtonEdit.addEventListener("click", function(){
-  popupClose(popupEdit)
+  closePopup(popupEdit)
 });
 closeButtonMesto.addEventListener("click", function(){
-  popupClose(popupMesto)
+  closePopup(popupMesto)
 });
 formEdit.addEventListener("submit", editInfo);
 closeButtonImage.addEventListener("click", function(){
-  popupClose(popupImage)
+  closePopup(popupImage)
 });
-const FormValidatorEdit = new FormValidation(config.formSelectorEdit, config);
-FormValidatorEdit.enableValidation();
-const FormValidatorMesto = new FormValidation(config.formSelectorMesto, config);
-FormValidatorMesto.enableValidation();
+const formValidatorEdit = new FormValidation(config.formSelectorEdit, config);
+formValidatorEdit.enableValidation();
+const formValidatorMesto = new FormValidation(config.formSelectorMesto, config);
+formValidatorMesto.enableValidation();
 
 
 
