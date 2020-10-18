@@ -52,7 +52,7 @@ export class FormValidation{
       this._formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
      });
-     this._setEventListeners(this._formElement);
+     this._setEventListeners();
   }
     _hasInvalidInput(inputList) {
       return inputList.some((inputElement) => {

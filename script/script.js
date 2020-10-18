@@ -67,7 +67,7 @@ initialCards.forEach((item) => {
 })
 function closePopup(popup){
     popup.classList.remove("popup_opened");
-    document.removeEventListener('keyup', closeByEsc);
+    document.removeEventListener('keydown', closeByEsc);
 }
 function editInfo(evt){
     evt.preventDefault();
