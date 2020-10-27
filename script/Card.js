@@ -1,9 +1,10 @@
 import {popupImage, popupOpen} from "./config.js"
 export class Card{
-    constructor(data, templateSelector){
+    constructor({data, templateSelector, handleCardClick}){
         this._name = data.name;
         this._link = data.link;
         this._templateSelector = templateSelector;
+        this._handleCardClick = handleCardClick;
     }
     _getTemplate(){
         const cardElement = document
