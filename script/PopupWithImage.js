@@ -9,4 +9,7 @@ export class PopupWithImage extends Popup{
      this._popup.querySelector("popup__caption_image").textContent = name;
      super.open();
  }
+ close(){
+     super.close()
+ }
 }

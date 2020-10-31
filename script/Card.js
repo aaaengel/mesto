@@ -9,16 +9,17 @@ export class Card{
     _getTemplate(){
         const cardElement = document
         .querySelector(this._templateSelector)
+        .cloneNode(true)
         .content
         .querySelector(".card")
-        .cloneNode(true);
-        return cardElement;
+         return cardElement;
     }
     generateCard(){
         this._item = this._getTemplate();
-        const _item = this._item.querySelector(".card__image");
-        _item.src = this._link;
-        _item.alt = this._name;
+        this._cardImage = this._item.querySelector(".card__image");
+        this._cardImage.src = this._link;
+        
+        this._cardImage.alt = this._name;
         this._item.querySelector(".card__text").textContent = this._name;
         this._setEventListeners();
         return this._item;

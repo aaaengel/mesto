@@ -1,4 +1,4 @@
-import {name, job} from "./constants.js";
+
 export  class UserInfo{
     constructor({userName, userPrivateInfo}){
         this._userName = document.querySelector(userName);
@@ -11,9 +11,8 @@ getUserInfo(){
     };
 return userInfo;
 }
-setUserInfo(){
-this.getUserInfo();
-name.textContent = this._userInfo.userName;
-job.textContent = this._userInfo.userPrivateInfo;
+setUserInfo(data){
+    this._userName.textContent = data.popupName;
+    this._info.textContent = data.popupJob;
 }
 }

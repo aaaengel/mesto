@@ -48,7 +48,7 @@ export class FormValidation{
       buttonElement.removeAttribute('disabled');
     }
     }
-     enableValidation = () => {
+     enableValidation(){
       this._formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
      });
