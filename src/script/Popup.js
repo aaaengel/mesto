@@ -1,7 +1,14 @@
-import {popupClose} from "./utils.js"
+import { FormValidation } from "./validate";
+
 export class Popup{
     constructor(popupSelector){
         this._popup = popupSelector;
+        this._handleEscClose = (evt) => {
+            if (evt.key === 'Escape') {
+                this.close();
+                
+            }
+        }
     }
     open(){
         this._popup.classList.add("popup_opened");
@@ -9,12 +16,7 @@ export class Popup{
     }
     close(){
         this._popup.classList.remove("popup_opened");
-    }
-    _handleEscClose(evt){
-        if (evt.key === 'Escape') {
-            const popupOpened = document.querySelector('.popup_opened');
-            popupClose(popupOpened);
-        }
+        document.removeEventListener('keyup', this._handleEscClose);
     }
     setEventListeners(){
         this._popup

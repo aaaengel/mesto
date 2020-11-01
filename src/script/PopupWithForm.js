@@ -21,10 +21,7 @@ setEventListeners(){
 }
 close() {
     super.close();
-    this._inputList = Array(this._popup.querySelector(".form__input"))
-    this._inputList.forEach((input) => {
-        input.textContent = "";
-    })
+    this._formElement.reset();
 }
 open() {
     this.setEventListeners();

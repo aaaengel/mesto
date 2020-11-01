@@ -1,6 +1,5 @@
 import {Card} from "./Card.js";
 import "../pages/index.css";
-import {popupClose} from "./utils.js"
 import {config} from "./config.js";
 import {FormValidation} from "./validate.js";
 import { nameInput, jobInput, popupEdit, popupMesto, closeButtonEdit, closeButtonMesto, popupImage, closeButtonImage, popupOverlayEdit, popupOverlayMesto, popupOverlayImage, link, mesto} from "./constants.js";
@@ -34,9 +33,12 @@ const initialCards = [
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
+const popupWithImage = new PopupWithImage(popupImage);
 const userInfo = new UserInfo({userName: ".profile__name", userPrivateInfo: ".profile__hobby"});
 const cardList = new Section({items: initialCards, renderer: (item) => {
-const card = new Card({data: item, templateSelector: ".card-template"})
+const card = new Card({data: item, templateSelector: ".card-template", handleCardClick: () =>{
+    popupWithImage.open(item.name, item.link);
+}})
 const cardElement = card.generateCard();
 cardList.addItem(cardElement)
 }}, ".cards")
@@ -44,6 +46,7 @@ const popupWithFormEdit = new PopupWithForm ({
     popupSelector: popupEdit,
     submitForm: () => {
         userInfo.setUserInfo({popupName: nameInput.value, popupJob: jobInput.value});
+        popupWithFormEdit.close();
     }
 });
 const popupWithFormMesto = new PopupWithForm({popupSelector: popupMesto, submitForm: () =>{
@@ -59,6 +62,7 @@ const popupWithFormMesto = new PopupWithForm({popupSelector: popupMesto, submitF
     })
     const cardElement = card.generateCard();
     cardList.addItem(cardElement);
+    popupWithFormMesto.close();
  }
 })
 cardList.renderItems()
@@ -66,30 +70,35 @@ const formValidatorEdit = new FormValidation(config.formSelectorEdit, config);
 formValidatorEdit.enableValidation();
 const formValidatorMesto = new FormValidation(config.formSelectorMesto, config);
 formValidatorMesto.enableValidation();
-function editButtonHandler () {
+function handleEditFormOpen () {
     const userObject =  userInfo.getUserInfo();
     nameInput.value = userObject.userName;
     jobInput.value = userObject.userPrivateInfo;
     formValidatorEdit.enableValidation();
     popupWithFormEdit.open();
+    formValidatorEdit.hideInputError(nameInput);
+    formValidatorEdit.hideInputError(jobInput);
 }
-document.querySelector('.profile__edit-button').addEventListener('click', editButtonHandler);
+document.querySelector('.profile__edit-button').addEventListener('click', handleEditFormOpen);
 closeButtonEdit.addEventListener("click", function(){
-    popupClose(popupEdit)
+    popupWithFormEdit.close();
 })
 popupOverlayEdit.addEventListener("click", function(evt){
     if(evt.target === popupOverlayEdit){
         popupWithFormEdit.close()
     }
 })
-const popupWithImage = new PopupWithImage(popupImage);
-function mestoButtonHandler() {
+function handleMestoFormOpen() {
     formValidatorMesto.enableValidation()
     popupWithFormMesto.open();
+    formValidatorMesto.hideInputError(mesto);
+    formValidatorMesto.hideInputError(link);
 }
-document.querySelector('.profile__add-button').addEventListener('click', mestoButtonHandler);
+document.querySelector('.profile__add-button').addEventListener('click', handleMestoFormOpen);
 closeButtonMesto.addEventListener("click", function(){
     popupWithFormMesto.close();
+    formValidatorMesto.hideInputError(mesto);
+    formValidatorMesto.hideInputError(link);
 })
 closeButtonImage.addEventListener("click", function(){
     popupWithImage.close();

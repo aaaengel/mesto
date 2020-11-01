@@ -15,7 +15,7 @@ export class FormValidation{
       inputElement.classList.add(this._inputErrorClass);
       errorElement.textContent = errorMessage;
     }
-    _hideInputError(inputElement){
+    hideInputError(inputElement){
       const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
       inputElement.classList.remove(this._inputErrorClass);
       errorElement.textContent = '';
@@ -24,7 +24,7 @@ export class FormValidation{
       if (!inputElement.validity.valid) {
         this._showInputError(inputElement, inputElement.validationMessage);
         } else {
-        this._hideInputError(inputElement);
+        this.hideInputError(inputElement);
       }
     };
     _setEventListeners(){

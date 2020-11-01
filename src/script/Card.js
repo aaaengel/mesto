@@ -39,13 +39,8 @@ export class Card{
         this._item.querySelector(".card__delete-button").addEventListener("click", () => {
           this._cardDelete(); 
         });
-        
         this._item.querySelector(".card__image").addEventListener("click", () => {
-          popupOpen(popupImage);
-          const popupImageImage = document.querySelector(".popup__image_image");
-          popupImageImage.src = this._link;
-          popupImageImage.alt = this._name;
-          document.querySelector(".popup__caption_image").textContent = this._name;
-        }); 
-    }
+          this._handleCardClick(this._name, this._link);
+        })
+      }
 }
