@@ -7,6 +7,7 @@ import {PopupWithImage} from "./PopupWithImage.js";
 import {PopupWithForm} from "./PopupWithForm.js";
 import {Section} from "./Section.js";
 import {UserInfo} from "./UserInfo.js";
+import {Api} from "./Api.js"
 const initialCards = [
     {
         name: 'Архыз',
@@ -113,6 +114,7 @@ popupOverlayImage.addEventListener("click", function(evt){
         popupWithImage.close()
     }
 })
+
 
 
 

@@ -7,6 +7,7 @@
 @import url("./__edit-button__image/profile__edit-button__image.css");
 @import url("./__name-and-edit-button/profile__name-and-edit-button.css");
 @import url("./__content/profile__content.css");
+
 .profile{
     max-width:882px;
     margin-top:40px;

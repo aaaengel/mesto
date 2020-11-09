@@ -6,7 +6,7 @@
 .logo{max-width:142.01px;min-height:33.4px;margin-bottom:40.6px}@media screen and (max-width:890px){.logo{margin-left:27px}}@media screen and (max-width:500px){.logo{max-width:103.74px;margin-bottom:31.6px}}
 .profile__edit-button{background-color:transparent;border:none;height:-webkit-min-content;height:-moz-min-content;height:min-content;padding:0;margin-top:19px;margin-left:17px}.profile__edit-button:hover{opacity:.6;cursor:pointer}@media screen and (max-width:630px){.profile__edit-button{margin-left:7px}}
 .profile__text{display:flex;max-width:360px;flex-wrap:wrap;margin-left:30px;flex-direction:column}@media screen and (max-width:630px){.profile__text{margin:auto}}
-.profile__avatar{border-radius:50%;max-width:120px;max-height:120px}@media screen and (max-width:630px){.profile__avatar{margin:auto}}
+.profile__avatar{border-radius:50%;max-width:120px;max-height:120px;opacity:1;transition:opacity .5s}@media screen and (max-width:630px){.profile__avatar{margin:auto}}.profile__avatar:hover{opacity:.2;cursor:pointer;transition:opacity .5s}
 .profile__name{font-family:Inter;font-style:normal;font-weight:500;font-size:42px;line-height:font-size;margin:0}@media screen and (max-width:630px){.profile__name{text-align:center;font-size:27px;display:flex;align-self:flex-end}}
 .profile__hobby{font-family:Inter;font-style:normal;font-weight:400;font-size:18px;margin-top:16px;line-height:font-size}@media screen and (max-width:630px){.profile__hobby{text-align:center;font-size:14px;margin:auto auto 36px}}
 .profile__add-button{border:2px solid #fff;background-color:transparent;width:150px;height:50px;align-self:center}.profile__add-button:hover{opacity:.6;cursor:pointer}@media screen and (max-width:630px){.profile__add-button{width:282px}}
@@ -20,7 +20,7 @@
 .card__description{max-width:282px;background-color:#fff;border-radius:0 0 10px 10px;display:flex;justify-content:space-between;padding-left:21px;padding-right:15px;color:#000}
 .card__like-button{border:none;padding:0;background-color:transparent;height:-webkit-min-content;height:-moz-min-content;height:min-content;align-self:center}.card__like-button:hover{opacity:.6;cursor:pointer}
 .card__delete-button{position:absolute;top:18px;right:15px;background-color:transparent;border:none}.card__delete-button:hover{cursor:pointer;opacity:.6}
-.card{margin-bottom:21px;position:relative}@media screen and (min-width:881px){.card:nth-child(3n){margin-right:18px;margin-left:18px}}@media screen and (max-width:880px){.card:nth-child(2n){margin-right:18px;margin-left:18px}}@media screen and (max-width:400px){.card,.card:nth-child(3n){margin:auto auto 20px}}
+.card{margin-bottom:21px;position:relative}@media screen and (min-width:881px){.card:nth-child(3n+2){margin-right:18px;margin-left:18px}}@media screen and (max-width:880px){.card:nth-child(2n){margin-right:18px;margin-left:18px}}@media screen and (max-width:400px){.card{margin:auto auto 20px}}
 .footer__copyright{font-family:Inter,Arial,Helvetica,sans-serif;font-style:normal;font-weight:400;font-size:18px;line-height:22px;color:#545454}@media screen and (max-width:350px){.footer__copyright{font-size:14px;line-height:17px;margin-left:19px;margin-bottom:36px}}
 .footer{margin-top:46px}@media screen and (max-width:350px){.footer{margin-top:29px}}
 .popup__window{max-width:430px;margin:auto;background-color:#fff;border-radius:10px;position:relative}@media screen and (max-width:510px){.popup__window{max-width:250px}}
