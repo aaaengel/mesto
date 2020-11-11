@@ -8,41 +8,21 @@ import {PopupWithForm} from "./PopupWithForm.js";
 import {Section} from "./Section.js";
 import {UserInfo} from "./UserInfo.js";
 import {Api} from "./Api.js"
-const initialCards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
+const api = new Api("https://mesto.nomoreparties.co/v1/cohort-17/")
 const popupWithImage = new PopupWithImage(popupImage);
 const userInfo = new UserInfo({userName: ".profile__name", userPrivateInfo: ".profile__hobby"});
-const cardList = new Section({items: initialCards, renderer: (item) => {
+api.getAny("cards").then((res) => {
+    const cardList = new Section({items: res, renderer: (item) => {
 const card = new Card({data: item, templateSelector: ".card-template", handleCardClick: () =>{
     popupWithImage.open(item.name, item.link);
 }})
 const cardElement = card.generateCard();
-cardList.addItem(cardElement)
-}}, ".cards")
+cardList.addItem(cardElement);
+}}, ".cards");
+cardList.renderItems();
+})
+.catch(err => console.log(err))
+
 const popupWithFormEdit = new PopupWithForm ({
     popupSelector: popupEdit,
     submitForm: () => {
@@ -50,6 +30,7 @@ const popupWithFormEdit = new PopupWithForm ({
         popupWithFormEdit.close();
     }
 });
+
 const popupWithFormMesto = new PopupWithForm({popupSelector: popupMesto, submitForm: () =>{
     const card = new Card({
         data: {
@@ -66,7 +47,7 @@ const popupWithFormMesto = new PopupWithForm({popupSelector: popupMesto, submitF
     popupWithFormMesto.close();
  }
 })
-cardList.renderItems()
+
 const formValidatorEdit = new FormValidation(config.formSelectorEdit, config);
 formValidatorEdit.enableValidation();
 const formValidatorMesto = new FormValidation(config.formSelectorMesto, config);
