@@ -1,8 +1,8 @@
-
 export  class UserInfo{
-    constructor({userName, userPrivateInfo}){
+    constructor({userName, userPrivateInfo, api}){
         this._userName = document.querySelector(userName);
         this._info = document.querySelector(userPrivateInfo);
+        this._api = api
 }
 getUserInfo(){
     const userInfo = {
@@ -12,7 +12,13 @@ getUserInfo(){
 return userInfo;
 }
 setUserInfo(data){
-    this._userName.textContent = data.popupName;
-    this._info.textContent = data.popupJob;
+    return this._api.patch("users/me", data)
+}
+getUserProfile() {
+    console.log(this._api);
+    return this._api.getAny('users/me').then(res => {
+        this._userName.textContent = res.name;
+        this._info.textContent =  res.about;
+    })
 }
 }

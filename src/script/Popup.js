@@ -1,5 +1,3 @@
-import { FormValidation } from "./validate";
-
 export class Popup{
     constructor(popupSelector){
         this._popup = popupSelector;

@@ -3,6 +3,8 @@
 @import url("./__description/card__description.css");
 @import url("./__like-button/card__like-button.css");
 @import url("./__delete-button/card__delete-button.css");
+@import url("./__like-caption/card__like-caption.css");
+@import url("./__like-button_and_caption/card__like-button_and_caption.css");
 .card{
     margin-bottom: 21px;
     position: relative;

@@ -1,10 +1,12 @@
 import {popupImage, popupOpen} from "./config.js"
 export class Card{
-    constructor({data, templateSelector, handleCardClick}){
+    constructor({data, templateSelector, handleCardClick, hadleDelete, api}){
         this._name = data.name;
         this._link = data.link;
         this._templateSelector = templateSelector;
         this._handleCardClick = handleCardClick;
+        this._cardId = data._id;
+        this._api = api;
     }
     _getTemplate(){
         const cardElement = document
@@ -37,7 +39,8 @@ export class Card{
         });
     
         this._item.querySelector(".card__delete-button").addEventListener("click", () => {
-          this._cardDelete(); 
+          this._cardElement = evt.target.parentElement;
+          this._handleBasketClick(this._cardId, this._cardElement, this._api);
         });
         this._item.querySelector(".card__image").addEventListener("click", () => {
           this._handleCardClick(this._name, this._link);
