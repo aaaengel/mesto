@@ -18,4 +18,4 @@ export const popupOverlayMesto = document.querySelector(".popup__overlay-mesto")
 export const popupOverlayImage = document.querySelector(".popup__overlay-image");
 export const link = document.querySelector(".form__input_link");
 export const mesto = document.querySelector(".form__input_mesto");
-export const popupConfirm = document.querySelector(".popup__confirm");
+export const popupConfirm = document.querySelector(".popup_confirm");

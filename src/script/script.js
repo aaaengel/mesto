@@ -19,7 +19,11 @@ const popupWithConfirm = new PopupConfirm(popupConfirm);
     const cardList = new Section({items: res, renderer: (item) => {
     const card = new Card({data: item, templateSelector: ".card-template", handleCardClick: () =>{
     popupWithImage.open(item.name, item.link);
-    }})
+    },
+    handleDelete:(cardId, item, api) => {
+        popupWithConfirm.open(cardId, item, api)
+        },
+        api: api})
     const cardElement = card.generateCard();
     cardList.addItem(cardElement);  
     }}, ".cards");
@@ -43,16 +47,18 @@ const popupWithConfirm = new PopupConfirm(popupConfirm);
     //добавление карточки
      const popupWithFormMesto = new PopupWithForm({popupSelector: popupMesto, submitForm: () =>{
     api.post("cards", {name: mesto.value, link: link.value}).then(res => {
-    const cardList = new Section({items: res, renderer: (item) => {
-    const card = new Card({
+        const cardList = new Section({items: [res], renderer: (item) => {
+        const card = new Card({
         data: item,
         templateSelector: '.card-template',
         handleCardClick: () => {
             popupWithImage.open(item.name, item.link);
         },
-    hadnleDelete:(cardId, item, api) =>{
-        popupWithConfirm.open(cardId, item, api)
-    }})
+        handleDelete:(cardId, item, api) => {
+            console.log(item.parentElement)
+            popupWithConfirm.open(cardId, item, api)
+        },
+        api: api})
     const cardElement = card.generateCard();
     cardList.addItem(cardElement);
     popupWithFormMesto.close();
