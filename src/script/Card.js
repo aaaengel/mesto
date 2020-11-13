@@ -32,18 +32,19 @@ export class Card{
       }
     _like(evt){
       if(evt.target.classList.contains('card__like-icon_active') === false) {
-        return this._api.put("cards/likes/" + this._cardId)
+        return this._api.put(`cards/likes/${this._cardId}`)
             .then(res => {
              this._toggleLike(res)
             })
     } else {
-        this._api.delete("cards/likes/" + this._cardId)
+        this._api.delete(`cards/likes/${this._cardId}`)
             .then(res => {
               this._toggleLike(res)
         })  
     }
     } 
     _toggleLike(data){
+      console.log(this._cardId)
       this._item.querySelector('.card__like-caption').textContent = data.likes.length;
       this._item.querySelector('.card__like-image').classList.toggle('card__like-icon_active')
     }

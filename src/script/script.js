@@ -55,7 +55,6 @@ const popupWithConfirm = new PopupConfirm(popupConfirm);
             popupWithImage.open(item.name, item.link);
         },
         handleDelete:(cardId, item, api) => {
-            console.log(item.parentElement)
             popupWithConfirm.open(cardId, item, api)
         },
         api: api})

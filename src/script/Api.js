@@ -61,8 +61,8 @@ post(item, data){
   }
   
   
-  delete(item, cardId){
-    return fetch(this._url + item + cardId, {
+  delete(item){
+    return fetch(this._url + item, {
       method: "DELETE",
       headers: {
         authorization: this._token,
@@ -79,8 +79,8 @@ post(item, data){
       console.log(err)
   })
   }
-  put(item, cardId){
-    return fetch(this._url + item + cardId, {
+  put(item){
+    return fetch(this._url + item, {
       method: "PUT",
       headers: {
       authorization: this._token,
