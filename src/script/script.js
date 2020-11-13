@@ -18,7 +18,7 @@ const popupWithConfirm = new PopupConfirm(popupConfirm);
     userInfo.getUserProfile().then(() => {api.getAny("cards").then((res) => {
     const cardList = new Section({items: res, renderer: (item) => {
     const card = new Card({data: item, templateSelector: ".card-template", handleCardClick: () =>{
-    popupWithImage.open(item.name, item.link);
+        popupWithImage.open(item.name, item.link);
     },
     handleDelete:(cardId, item, api) => {
         popupWithConfirm.open(cardId, item, api)

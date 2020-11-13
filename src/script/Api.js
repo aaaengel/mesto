@@ -69,11 +69,32 @@ post(item, data){
       'Content-Type': 'application/json'
       }
     })
-    .then((res) => {
-      return res.json()
-      })
-    .catch((err) => {
+    .then(res => {
+      if(res.ok) {
+          return res.json()
+      }
+      return Promise.reject(`Ошибка: ${res.status}`)
+  })
+  .catch((err) => {
       console.log(err)
-      })
+  })
+  }
+  put(item, cardId){
+    return fetch(this._url + item + cardId, {
+      method: "PUT",
+      headers: {
+      authorization: this._token,
+      'Content-Type': 'application/json'
+      }
+    })
+    .then(res => {
+      if(res.ok) {
+          return res.json()
+      }
+      return Promise.reject(`Ошибка: ${res.status}`)
+  })
+  .catch((err) => {
+      console.log(err)
+  })
   }
 }

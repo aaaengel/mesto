@@ -30,12 +30,26 @@ export class Card{
         this._item.remove();
         this._item = null;
       }
-    _like(){
-        this._item.querySelector(".card__like-button").classList.toggle("card__like-icon_active");
+    _like(evt){
+      if(evt.target.classList.contains('card__like-icon_active') === false) {
+        return this._api.put("cards/likes/" + this._cardId)
+            .then(res => {
+             this._toggleLike(res)
+            })
+    } else {
+        this._api.delete("cards/likes/" + this._cardId)
+            .then(res => {
+              this._toggleLike(res)
+        })  
+    }
     } 
+    _toggleLike(data){
+      this._item.querySelector('.card__like-caption').textContent = data.likes.length;
+      this._item.querySelector('.card__like-image').classList.toggle('card__like-icon_active')
+    }
     _setEventListeners() {
-        this._item.querySelector(".card__like-button").addEventListener("click", () => {
-        this._like();
+        this._item.querySelector(".card__like-button").addEventListener("click", (evt) => {
+        this._like(evt);
         });
     
         this._item.querySelector(".card__delete-button").addEventListener("click", (evt) => {
