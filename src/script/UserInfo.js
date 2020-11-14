@@ -13,6 +13,9 @@ return userInfo;
 }
 setUserInfo(data){
     return this._api.patch("users/me", data)
+} 
+editUserAvatar(item, data){
+return this._api.patchAvatar(item, data)
 }
 getUserProfile() {
     console.log(this._api);

@@ -13,11 +13,14 @@ getAny(item){
             "Content-type": "application/json"
         }
     }).then((res) => {
-            return res.json();
-      })
-        .catch((err) => {
-        console.log(err)
-    })
+      if(res.ok) {
+          return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`)
+  })
+  .catch((err) => {
+      console.log(err)
+  })
 }
 
 
@@ -33,13 +36,35 @@ patch(item, data){
     about: data.popupJob
   })
 }).then((res) => {
+  if(res.ok) {
+      return res.json();
+  }
+  return Promise.reject(`Ошибка: ${res.status}`)
+})
+.catch((err) => {
+  console.log(err)
+})
+}
+patchAvatar(item, data){
+  return fetch(this._url + item, {
+method: 'PATCH',
+headers: {
+  authorization: this._token,
+  'Content-Type': 'application/json'
+},
+body: JSON.stringify({
+  avatar: data.link
+})
+}).then((res) => {
+if(res.ok) {
     return res.json();
+}
+return Promise.reject(`Ошибка: ${res.status}`)
 })
 .catch((err) => {
 console.log(err)
 })
 }
-
 
 post(item, data){
   return fetch(this._url + item, {
@@ -53,11 +78,14 @@ post(item, data){
       link: data.link
     })
   }).then((res) => {
-    return res.json()
-    })
-    .catch((err) => {
-      console.log(err)
-      })
+    if(res.ok) {
+        return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`)
+})
+.catch((err) => {
+    console.log(err)
+})
   }
   
   
@@ -69,9 +97,9 @@ post(item, data){
       'Content-Type': 'application/json'
       }
     })
-    .then(res => {
+    .then((res) => {
       if(res.ok) {
-          return res.json()
+          return res.json();
       }
       return Promise.reject(`Ошибка: ${res.status}`)
   })
@@ -87,9 +115,9 @@ post(item, data){
       'Content-Type': 'application/json'
       }
     })
-    .then(res => {
+    .then((res) => {
       if(res.ok) {
-          return res.json()
+          return res.json();
       }
       return Promise.reject(`Ошибка: ${res.status}`)
   })

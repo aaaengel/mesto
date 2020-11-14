@@ -19,3 +19,10 @@ export const popupOverlayImage = document.querySelector(".popup__overlay-image")
 export const link = document.querySelector(".form__input_link");
 export const mesto = document.querySelector(".form__input_mesto");
 export const popupConfirm = document.querySelector(".popup_confirm");
+export const popupAvatar = document.querySelector(".popup_avatar");
+export const profileAvatar = document.querySelector(".profile__avatar");
+export const avatarLink = document.querySelector(".popup__form_avatar");
+export const closeButtonAvatar = document.querySelector(".popup__close-button_avatar");
+export const popupAvatarOverlay = document.querySelector(".popup__overlay-avatar");
+export const popupAvatarSaveButton = document.querySelector(".popup__save-button_avatar");
+

@@ -8,7 +8,7 @@ this._popupConfirmButton = this._popup.querySelector('.popup__save-button')
 open(cardId, item, api) {
     this._popupConfirmButton.addEventListener('click', (evt) => {
     evt.preventDefault()
-    api.delete(`cards/${cardId}`)
+    api.delete(`cards/${cardId  }`)
     .then(() => {
         item.remove()
     })
