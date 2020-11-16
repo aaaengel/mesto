@@ -32,8 +32,8 @@ patch(item, data){
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
-    name: data.popupName,
-    about: data.popupJob
+    name: data.name,
+    about: data.about
   })
 }).then((res) => {
   if(res.ok) {
