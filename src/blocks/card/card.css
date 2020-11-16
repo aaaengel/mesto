@@ -5,8 +5,7 @@
 @import url("./__delete-button/card__delete-button.css");
 @import url("./__like-caption/card__like-caption.css");
 @import url("./__like-button_and_caption/card__like-button_and_caption.css");
-@import url("./__delete-button/type/_active/card__delete-button_type_active.css");
-
+@import url("./__delete-button/type/_isHidden/card__delete-button_type_isHidden.css");
 .card{
     margin-bottom: 21px;
     position: relative;

@@ -18,6 +18,9 @@ export class Card{
         .querySelector(".card")
          return cardElement;
     }
+    _checkCardId(){
+      return this._owner === this._myId;
+    }
     generateCard(){
         this._item = this._getTemplate();
         this._cardImage = this._item.querySelector(".card__image");
@@ -26,8 +29,8 @@ export class Card{
         this._cardImage.alt = this._name;
         this._item.querySelector(".card__text").textContent = this._name;
         this._setEventListeners();
-        if (this._owner === this._myId) {
-          this._item.querySelector('.card__delete-button').classList.add('card__delete-button_type_active')
+        if (!this._checkCardId()) {
+          this._item.querySelector('.card__delete-button').classList.add('card__delete-button_type_isHidden')
       }
         return this._item;
       }
