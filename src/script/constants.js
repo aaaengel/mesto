@@ -25,4 +25,5 @@ export const avatarLink = document.querySelector(".popup__form_avatar");
 export const closeButtonAvatar = document.querySelector(".popup__close-button_avatar");
 export const popupAvatarOverlay = document.querySelector(".popup__overlay-avatar");
 export const popupAvatarSaveButton = document.querySelector(".popup__save-button_avatar");
+export const saveButtonEdit = document.querySelector('.popup__save-button_edit');
 

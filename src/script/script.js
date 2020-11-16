@@ -2,7 +2,7 @@ import {Card} from "./Card.js";
 import "../pages/index.css";
 import {config} from "./config.js";
 import {FormValidation} from "./validate.js";
-import { nameInput, jobInput, popupEdit, popupMesto, closeButtonEdit, closeButtonMesto, popupImage, closeButtonImage, popupOverlayEdit, popupOverlayMesto, popupOverlayImage, link, mesto, popupConfirm, popupAvatar, profileAvatar, avatarLink, closeButtonAvatar, popupAvatarOverlay, popupAvatarSaveButton} from "./constants.js";
+import { nameInput, jobInput, popupEdit, popupMesto, closeButtonEdit, closeButtonMesto, popupImage, closeButtonImage, popupOverlayEdit, popupOverlayMesto, popupOverlayImage, link, mesto, popupConfirm, popupAvatar, profileAvatar, avatarLink, closeButtonAvatar, popupAvatarOverlay, popupAvatarSaveButton, editButton, addButton, saveButtonEdit} from "./constants.js";
 import {PopupWithImage} from "./PopupWithImage.js";
 import {PopupWithForm} from "./PopupWithForm.js";
 import {Section} from "./Section.js";
@@ -16,15 +16,15 @@ const userInfo = new UserInfo({userName: ".profile__name", userPrivateInfo: ".pr
 const popupWithConfirm = new PopupConfirm(popupConfirm);
 
 //добавление карточек
-    userInfo.getUserProfile().then(() => {api.getAny("cards").then((res) => {
+    userInfo.getUserProfile().then((id) => {api.getAny("cards").then((res) => {
     const cardList = new Section({items: res, renderer: (item) => {
     const card = new Card({data: item, templateSelector: ".card-template", handleCardClick: () =>{
         popupWithImage.open(item.name, item.link);
     },
     handleDelete:(cardId, item, api) => {
-        popupWithConfirm.open(cardId, item, api)
+        popupWithConfirm.open(cardId, item, api )
         },
-        api: api})
+        api: api, myId: id})
     const cardElement = card.generateCard();
     cardList.addItem(cardElement);  
     }}, ".cards");
@@ -35,11 +35,11 @@ const popupWithConfirm = new PopupConfirm(popupConfirm);
     const popupWithFormEdit = new PopupWithForm ({
     popupSelector: popupEdit,
     submitForm: () => {
-        renderLoading(document.querySelector('.popup__save-button_edit'), true, 'Сохранение...')
+        renderLoading(saveButtonEdit, true, 'Сохранение...')
         userInfo.setUserInfo({popupName: nameInput.value, popupJob: jobInput.value})
         .then(res => {
-            document.querySelector(".profile__name").textContent = res.name;
-            document.querySelector(".profile__hobby").textContent = res.about;
+            name.textContent = res.name;
+            job.textContent = res.about;
         })
         .finally(() => {
             popupWithFormEdit.close()
@@ -48,7 +48,7 @@ const popupWithConfirm = new PopupConfirm(popupConfirm);
     });
     //добавление карточки
      const popupWithFormMesto = new PopupWithForm({popupSelector: popupMesto, submitForm: () =>{
-        renderLoading(document.querySelector('.popup__save-button_mesto'), true, 'Сохранение...')
+        renderLoading(saveButtonMesto, true, 'Сохранение...')
     api.post("cards", {name: mesto.value, link: link.value}).then(res => {
         const cardList = new Section({items: [res], renderer: (item) => {
         const card = new Card({
@@ -60,7 +60,7 @@ const popupWithConfirm = new PopupConfirm(popupConfirm);
         handleDelete:(cardId, item, api) => {
             popupWithConfirm.open(cardId, item, api)
         },
-        api: api})
+        api: api, myId: item.owner._id})
     const cardElement = card.generateCard();
     cardList.addItem(cardElement);
     popupWithFormMesto.close();
@@ -97,7 +97,7 @@ function handleEditFormOpen () {
     formValidatorEdit.hideInputError(nameInput);
     formValidatorEdit.hideInputError(jobInput);
 }
-document.querySelector('.profile__edit-button').addEventListener('click', handleEditFormOpen);
+editButton.addEventListener('click', handleEditFormOpen);
 closeButtonEdit.addEventListener("click", function(){
     popupWithFormEdit.close();
 })
@@ -118,7 +118,7 @@ function handleAvatarFormOpen(){
     formValidatorAvatar.enableValidation();
 }
 profileAvatar.addEventListener("click", handleAvatarFormOpen)
-document.querySelector('.profile__add-button').addEventListener('click', handleMestoFormOpen);
+addButton.addEventListener('click', handleMestoFormOpen);
 closeButtonMesto.addEventListener("click", function(){
     popupWithFormMesto.close();
     formValidatorMesto.hideInputError(mesto);

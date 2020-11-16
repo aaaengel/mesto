@@ -18,10 +18,10 @@ editUserAvatar(item, data){
 return this._api.patchAvatar(item, data)
 }
 getUserProfile() {
-    console.log(this._api);
     return this._api.getAny('users/me').then(res => {
         this._userName.textContent = res.name;
         this._info.textContent =  res.about;
+        return res._id
     })
 }
 }

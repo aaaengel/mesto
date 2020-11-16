@@ -1,5 +1,5 @@
 export class Card{
-    constructor({data, templateSelector, handleCardClick, handleDelete, api}){
+    constructor({data, templateSelector, handleCardClick, handleDelete, api, myId}){
         this._name = data.name;
         this._link = data.link;
         this._templateSelector = templateSelector;
@@ -7,6 +7,8 @@ export class Card{
         this._cardId = data._id;
         this._api = api;
         this._handleDelete = handleDelete;
+        this._owner = data.owner._id;
+        this._myId = myId;
     }
     _getTemplate(){
         const cardElement = document
@@ -24,8 +26,11 @@ export class Card{
         this._cardImage.alt = this._name;
         this._item.querySelector(".card__text").textContent = this._name;
         this._setEventListeners();
+        if (this._owner === this._myId) {
+          this._item.querySelector('.card__delete-button').classList.add('card__delete-button_type_active')
+      }
         return this._item;
-    }
+      }
     _cardDelete() {
         this._item.remove();
         this._item = null;
