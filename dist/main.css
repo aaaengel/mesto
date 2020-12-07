@@ -23,7 +23,7 @@
 .card__delete-button{position:absolute;top:18px;right:15px;background-color:transparent;border:none}.card__delete-button:hover{cursor:pointer;opacity:.6}
 .card__like-caption{margin:0 0 0 8px}
 .card__like-button_and_caption{display:flex;flex-direction:column;margin-top:26px;margin-bottom:24px}
-.card__like-button_type_isHidden{display:none}
+.card__delete-button_type_isHidden{display:none}
 .card{margin-bottom:21px;position:relative}@media screen and (min-width:881px){.card:nth-child(3n+2){margin-right:18px;margin-left:18px}}@media screen and (max-width:880px){.card:nth-child(2n){margin-right:18px;margin-left:18px}}@media screen and (max-width:400px){.card{margin:auto auto 20px}}
 .footer__copyright{font-family:Inter,Arial,Helvetica,sans-serif;font-style:normal;font-weight:400;font-size:18px;line-height:22px;color:#545454}@media screen and (max-width:350px){.footer__copyright{font-size:14px;line-height:17px;margin-left:19px;margin-bottom:36px}}
 .footer{margin-top:46px}@media screen and (max-width:350px){.footer{margin-top:29px}}
